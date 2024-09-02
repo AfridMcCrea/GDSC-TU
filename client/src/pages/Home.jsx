@@ -4,6 +4,7 @@ import WavesSvg from "../components/WavesSvg";
 import "../components/WavesSvg.css";
 import ClubInsights from "./ClubInsights";
 import Headers from "../components/Headers";
+import Events from "./Events";
 export default function Home() {
   return (
     <div className="h-screen">
@@ -27,11 +28,14 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-[1450px] mr-5">
+      <div className="sm:w-[1450px] w-[650px] sm:mr-5 mt-5">
         <WavesSvg />
       </div>
       <div className="">
         <ClubInsights />
+      </div>
+      <div className="">
+        <Events />
       </div>
     </div>
   );

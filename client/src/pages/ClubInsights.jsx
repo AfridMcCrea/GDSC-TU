@@ -3,7 +3,7 @@ import CircleAnimation from "../components/CircleAnimation";
 
 export default function ClubInsights() {
   return (
-    <div className="h-screen">
+    <div className="h-screen border">
       <div className="p-2 mt-[150px]">
         <h1 className="text-center sm:m-10 text-4xl">Club Insights</h1>
       </div>
