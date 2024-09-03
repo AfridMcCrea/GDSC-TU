@@ -12,7 +12,7 @@ export default function Headers() {
         <img src={logo} alt="Logo" className="sm:h-6 m-3 mt-4 h-[10px]" />
         <div className="sm:flex sm:flex-col hidden">
           <span className="text-black ml-1 mt-2 sm:text-[14px] text-[11px] dark:text-gray-300">
-            Google Developer Students Clubs
+            Google Developer Student Clubs
           </span>
           <span className="text-gray-600 ml-1 sm:text-[11px] text-[9px] dark:text-gray-400">
             Tezpur University

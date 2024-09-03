@@ -1,11 +1,20 @@
 import React from "react";
 import CircleAnimation from "../components/CircleAnimation";
+import backgroundImage from "../assets/background.png";
+
 
 export default function ClubInsights() {
   return (
-    <div className="h-screen border">
+    <div
+      className="h-screen"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="p-2 mt-[150px]">
-        <h1 className="text-center sm:m-10 text-4xl">Club Insights</h1>
+        <h1 className="text-center sm:m-10 sm:text-[40px]">Club Insights</h1>
       </div>
       <div className="flex gap-10 items-center justify-center m-5">
         <div className="h-[400px] w-[320px] border shadow-lg rounded-xl">
