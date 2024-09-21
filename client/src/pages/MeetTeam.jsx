@@ -1,5 +1,3 @@
-import React from "react";
-import CircleAnimation from "../components/CircleAnimation";
 import backgroundImage from "../assets/background.png";
 import events from "../assets/events.jpg";
 
@@ -27,9 +25,9 @@ export default function MeetTeam() {
               />
             </div>
             <h1 className="ml-[51px] text-2xl mt-2">
-              <span>Abhinav Upadhyay</span>
+              <span>Ritap Dey</span>
             </h1>
-            <h1 className="ml-[90px] font-light text-xl ">GDSC Lead</h1>
+            <h1 className="ml-[90px] font-light text-xl ">Development Co-Lead</h1>
           </div>
           <div className="h-[300px] w-[280px] bg-gray-400 border shadow-lg rounded-[50px]">
             <div className="ml-[70px] mt-[40px]">
