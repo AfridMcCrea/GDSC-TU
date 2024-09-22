@@ -43,9 +43,10 @@ export default function Home() {
 
   return (
     <div className="h-screen">
+      
       <Headers />
       <div className="mt-[250px] w-full">
-        <div className="w-full flex flex-row justify-center">
+        <div className="w-full flex m-auto flex-row justify-center">
           <img
             ref={logoAnimation}
             src={logo}
@@ -53,18 +54,18 @@ export default function Home() {
             className="mt-4 h-[5rem]"
           />
         </div>
-        <div className="w-full flex justify-center">
+        <div className="w-full m-auto flex justify-center">
           <h1
             ref={headingOne}
             className="text-black dark:text-gray-300 sm:text-[54px] text-[21px]"
           >
-            Google Developer Student Clubs
+            Google Developer Groups
           </h1>
         </div>
         <div className="w-full flex justify-center">
           <h1
             ref={headingTwo}
-            className="text-gray-500 dark:text-gray-300 sm:text-[40px] text-[21px] ml-[80px]"
+            className="text-gray-500 dark:text-gray-300 sm:text-[40px] text-[21px] m-auto"
           >
             Tezpur University
           </h1>
