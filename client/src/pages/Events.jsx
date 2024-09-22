@@ -1,11 +1,13 @@
 import { useState } from "react";
 import backgroundImage from "../assets/background.png";
-import events from "../assets/events.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { data } from "../utils";
+import { useNavigate } from "react-router-dom";
 
 export default function Events() {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [hoveredEventId, setHoveredEventId] = useState(null);
 
@@ -15,46 +17,8 @@ export default function Events() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    arrows: true
   };
-
-  const data = [
-    {
-      participation: "solo",
-      id: "1",
-      category: "tech",
-      title: "HACKATHON",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus, neque vel tempus viverra,arcu ipsum egestas nisi, a convallis neque tellus vel velit.",
-      imageUrl: "../../public/tsn.jpg",
-    },
-    {
-      participation: "team",
-      id: "2",
-      category: "games",
-      title: "React Ep 00",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus, neque vel tempus viverra, arcu ipsum egestas nisi, a convallis neque tellus vel velit.",
-      imageUrl: "../",
-    },
-    {
-      participation: "solo",
-      id: "3",
-      category: "tech",
-      title: "CODE WAR",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus, neque vel tempus viverra, arcu ipsum egestas nisi, a convallis neque tellus vel velit.",
-      imageUrl: "./code war.jpeg",
-    },
-    {
-      participation: "solo",
-      id: "4",
-      category: "workshops",
-      title: "TEDTALK",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus, neque vel tempus viverra, arcu ipsum egestas nisi, a convallis neque tellus vel velit.",
-      imageUrl: "./tedtalk.jpeg",
-    },
-  ];
 
   const filteredData =
     selectedCategory === "All"
@@ -115,7 +79,7 @@ export default function Events() {
             {filteredData.map((d) => (
               <div
                 key={d.id}
-                className="p-4"
+                className="p-4 relative"
                 onMouseEnter={() => {
                   setHoveredEventId(d.id);
                 }}
@@ -123,20 +87,27 @@ export default function Events() {
               >
                 <div className="">
                   <div
-                    className={`flex relative flex-col w-[25rem] bg-slate-50 shadow-lg rounded-3xl min-h-[500px] hover:scale-105 transform hover:scale-101 transition-transform duration-300 hover:cursor-pointer`}
+                    className={`flex relative flex-col w-[24rem] bg-slate-50 shadow-lg rounded-3xl min-h-[500px] hover:scale-105 transform hover:scale-101 transition-transform duration-300 hover:cursor-pointer`}
                   >
                     <div className="flex pl-8 flex-col pt-4">
-                      <div className="h-[4rem] w-full">
+                      <div className="h-[5rem] w-full flex flex-col">
                         <button
                           type="button"
-                          className="bg-[#2b2b2b] rounded-[25px] py-1 px-7 uppercase text-[2rem] text-white font-bold w-fit"
+                          className="bg-[#2b2b2b] z-10 rounded-[25px] py-1 px-7 uppercase text-[2rem] text-white font-bold w-fit"
                         >
                           {d.title}
                         </button>
+                        <p className="pl-2 pt-2 font-bold">
+                          {`{ category: "${d.category.toUpperCase()}" }`}
+                        </p>
                       </div>
                       <div className="w-full flex justify-center h-[20rem] items-center">
                         <div className="w-[90%]">
-                          <p className="text-black text-xl">{d.description}</p>
+                          <p className="text-slate-400">{`<p>`}</p>
+                          <p className="text-black text-xl">
+                            {d.description} <br />
+                          </p>
+                          <p className="text-slate-400">{`<p>`}</p>
                         </div>
                       </div>
                       <div className="flex justify-center mt-auto">
@@ -148,15 +119,18 @@ export default function Events() {
                         />
                       </div>
                       <div className="">
-                        <p className="text-[#808080] pl-8 pt-4 pb-4">
+                        {/* <p className="text-[#808080] pl-8 pt-4 pb-4 hover:underline">
                           Know More
-                        </p>
+                        </p> */}
+                        <button type="button" className="text-white px-4 py-1 bg-[#2b2b2b] rounded-xl hover:text-[#808080]" onClick={() => { navigate('/about') }}>
+                          Know more
+                        </button>
                         {hoveredEventId === d.id && (
-                          <div className="absolute inset-0 opacity-30 transition-opacity ease-in-out duration-300">
+                          <div className="absolute inset-0 transition-opacity ease-in-out duration-300">
                             <img
                               src={d.imageUrl}
                               alt={d.title}
-                              className="object-cover w-full h-full rounded-3xl"
+                              className="object-cover w-full h-full rounded-3xl opacity-30"
                             />
                           </div>
                         )}
