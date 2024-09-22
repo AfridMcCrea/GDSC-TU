@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Newsletter from "./Newsletter";
+import backgroundImage from "../assets/background.png";
 
 export default function Home() {
   const logoAnimation = useRef(null);
@@ -42,10 +43,13 @@ export default function Home() {
   }, [headingTwo]);
 
   return (
-    <div className="h-screen">
-      
+    <div className="min-h-screen w-full">
       <Headers />
-      <div className="mt-[250px] w-full">
+      <div className="sm:mt-[250px] mt-[200px] w-full" style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "contain",
+        backgroundPosition: "center",
+      }}>
         <div className="w-full flex m-auto flex-row justify-center">
           <img
             ref={logoAnimation}
@@ -57,7 +61,7 @@ export default function Home() {
         <div className="w-full m-auto flex justify-center">
           <h1
             ref={headingOne}
-            className="text-black dark:text-gray-300 sm:text-[54px] text-[21px]"
+            className="text-black dark:text-gray-300 sm:text-[40px] md:text-[54px] text-[21px]"
           >
             Google Developer Groups
           </h1>
@@ -65,19 +69,27 @@ export default function Home() {
         <div className="w-full flex justify-center">
           <h1
             ref={headingTwo}
-            className="text-gray-500 dark:text-gray-300 sm:text-[40px] text-[21px]"
+            className="text-gray-500 dark:text-gray-300 sm:text-[30px] md:text-[40px] text-[21px]"
           >
             Tezpur University
           </h1>
         </div>
       </div>
-      <div className="w-full sm:mr-5 mt-5">
+      <div className="w-full sm:mr-5 mt-[10rem] sm:mt-5">
         <WavesSvg />
       </div>
-      <ClubInsights />
-      <Events />
-      <MeetTeam />
-      <Newsletter />
+      <div className="">
+        <ClubInsights />
+      </div>
+      <div className="">
+        <Events />
+      </div>
+      <div className="w-full min-h-screen">
+        <MeetTeam />
+      </div>
+      <div className="w-full">
+        <Newsletter />
+      </div>
     </div>
   );
 }

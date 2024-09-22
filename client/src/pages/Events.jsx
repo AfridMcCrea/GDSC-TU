@@ -17,6 +17,7 @@ export default function Events() {
   const [hoveredEventId, setHoveredEventId] = useState(null);
   const eventsHeading = useRef(null);
   const borderNavbar = useRef(null);
+  const sliderRef = useRef(null);
 
   useGSAP(() => {
     if (eventsHeading.current) {
@@ -27,7 +28,7 @@ export default function Events() {
         duration: 0.5,
         scrollTrigger: {
           trigger: "#eventsHeading",
-          markers: true,
+          // markers: true,
           start: "top 80%",
           end: "top 30%",
           scrub: 2,
@@ -46,7 +47,7 @@ export default function Events() {
         stagger: 0.15,
         scrollTrigger: {
           trigger: "#border",
-          markers: true,
+          // markers: true,
           start: "top 80%",
           end: "top 30%",
           scrub: 2,
@@ -55,13 +56,30 @@ export default function Events() {
     }
   }, [borderNavbar]);
 
+  useGSAP(() => {
+    if(sliderRef.current){
+      gsap.from(sliderRef.current, {
+        y: 10,
+        opacity: 0,
+        delay: 1.0,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: "#slider",
+          markers: true,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 2,
+        },
+      })
+    }
+  }, [sliderRef]);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: true,
   };
 
   const filteredData =
@@ -73,14 +91,14 @@ export default function Events() {
 
   return (
     <div
-      className="h-full overflow-x-hidden"
+      className="overflow-x-hidden w-full sm:pt-[50rem] md:pt-0 sm:pb-[5rem] md:pb-0 pb-[2rem]"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div id="eventsHeading" className="p-2 mt-[80px] w-full">
+      <div id="eventsHeading" className="px-2 pb-[3rem] w-full">
         <h1
           ref={eventsHeading}
           className="w-full flex flex-row justify-center text-[3rem]"
@@ -115,12 +133,12 @@ export default function Events() {
             ))}
           </ul>
         </div>
-        <div className="w-full ">
+        <div id="slider" className="w-full">
           <Slider {...settings}>
             {filteredData.map((d) => (
               <div
                 key={d.id}
-                className="p-4 relative"
+                className="p-4 sm:p-4 relative"
                 onMouseEnter={() => {
                   setHoveredEventId(d.id);
                 }}
@@ -128,24 +146,24 @@ export default function Events() {
               >
                 <div className="">
                   <div
-                    className={`border-2 m-auto flex relative flex-col w-[24rem] bg-slate-50 shadow-lg rounded-3xl min-h-[500px] hover:scale-105 transform hover:scale-101 transition-transform duration-300 hover:cursor-pointer`}
+                    className={`border-2 m-auto flex relative flex-col w-[24rem] bg-slate-50 shadow-lg rounded-3xl min-h-[400px] sm:min-h-[490px] hover:scale-105 transform hover:scale-101 transition-transform duration-300 hover:cursor-pointer`}
                   >
-                    <div className="flex pl-8 flex-col pt-4">
-                      <div className="h-[5rem] w-full flex flex-col">
+                    <div className="flex pl-6 sm:pl-8 flex-col pt-4">
+                      <div className="h-[4rem] sm:h-[5rem] w-full flex flex-col">
                         <button
                           type="button"
-                          className="bg-[#2b2b2b] z-10 rounded-[25px] py-1 px-7 uppercase text-[2rem] text-white font-bold w-fit"
+                          className="bg-[#2b2b2b] z-10 rounded-[20px] sm:rounded-[25px] py-1 sm:px-7 uppercase text-[1.5rem] sm:text-[2rem] text-white font-bold w-fit"
                         >
                           {d.title}
                         </button>
-                        <p className="pl-2 pt-2 font-bold">
+                        <p className="pl-2 pt-2 font-bold text-[0.8rem] sm:text-[1rem]">
                           {`{ category: "${d.category.toUpperCase()}" }`}
                         </p>
                       </div>
-                      <div className="w-full flex justify-center h-[20rem] items-center">
+                      <div className="w-full flex justify-center h-[16rem] sm:h-[20rem] items-center">
                         <div className="w-[90%]">
                           <p className="text-slate-400">{`<p>`}</p>
-                          <p className="text-black text-xl">
+                          <p className="text-black text-[0.9rem] sm:text-xl">
                             {d.description} <br />
                           </p>
                           <p className="text-slate-400">{`<p>`}</p>
