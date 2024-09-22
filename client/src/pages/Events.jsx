@@ -12,12 +12,11 @@ export default function Events() {
   const [hoveredEventId, setHoveredEventId] = useState(null);
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: true
   };
 
   const filteredData =
@@ -29,7 +28,7 @@ export default function Events() {
 
   return (
     <div
-      className="h-screen"
+      className="h-full overflow-x-hidden"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -37,11 +36,11 @@ export default function Events() {
       }}
     >
       <div className="p-2 mt-[80px] w-full">
-        <h1 className="w-full flex flex-row justify-center text-[3rem]">
+        <h1 className="w-full pb-5 flex flex-row justify-center text-[3rem]">
           Events
         </h1>
-        <div className="list-none w-full z-10 flex justify-center text-white pt-4 pb-6">
-          <ul className="flex flex-row border-[1px] border-slate-400 px-6 rounded-3xl">
+        <div className="list-none  w-full z-10 flex justify-center text-white pt-4">
+          <ul className="flex flex-row border-[1px] border-slate-400 px-6 rounded-3xl ">
             <li
               className={`py-4 pr-7 cursor-pointer hover:scale-105 transform ease-in-out duration-150 hover:font-semibold ${
                 selectedCategory === "Workshops"
@@ -74,7 +73,7 @@ export default function Events() {
             </li>
           </ul>
         </div>
-        <div className="w-full">
+        <div className="w-full ">
           <Slider {...settings}>
             {filteredData.map((d) => (
               <div
@@ -87,7 +86,7 @@ export default function Events() {
               >
                 <div className="">
                   <div
-                    className={`flex relative flex-col w-[24rem] bg-slate-50 shadow-lg rounded-3xl min-h-[500px] hover:scale-105 transform hover:scale-101 transition-transform duration-300 hover:cursor-pointer`}
+                    className={`border-2 m-auto flex relative flex-col w-[24rem] bg-slate-50 shadow-lg rounded-3xl min-h-[500px] hover:scale-105 transform hover:scale-101 transition-transform duration-300 hover:cursor-pointer`}
                   >
                     <div className="flex pl-8 flex-col pt-4">
                       <div className="h-[5rem] w-full flex flex-col">
