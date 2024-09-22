@@ -50,9 +50,9 @@ export default function Headers() {
   })
 
   return (
-    <Navbar className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 ">
+    <Navbar className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 w-full">
       <div className="flex m-1 lg:m-2" ref={navbarLogo}>
-        <img src={logo} alt="Logo" className="sm:h-6 m-3 mt-4 h-[10px]" />
+        <img src={logo} alt="Logo" className="sm:h-8 sm:w-12 h-6 w-8 m-3 mt-4" />
         <div className="sm:flex sm:flex-col hidden">
           <span className="text-black ml-1 mt-2 sm:text-[14px] text-[11px] dark:text-gray-300">
             Google Developer Student Clubs
