@@ -1,15 +1,59 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import backgroundImage from "../assets/background.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { data } from "../utils";
 import { useNavigate } from "react-router-dom";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Events() {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [hoveredEventId, setHoveredEventId] = useState(null);
+  const eventsHeading = useRef(null);
+  const borderNavbar = useRef(null);
+
+  useGSAP(() => {
+    if (eventsHeading.current) {
+      gsap.from(eventsHeading.current, {
+        y: 10,
+        opacity: 0,
+        delay: 0.5,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: "#eventsHeading",
+          markers: true,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 2,
+        },
+      });
+    }
+  }, [eventsHeading]);
+
+  useGSAP(() => {
+    if (borderNavbar.current) {
+      gsap.from(borderNavbar.current, {
+        y: 10,
+        opacity: 0,
+        delay: 0.5,
+        duration: 0.5,
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: "#border",
+          markers: true,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 2,
+        },
+      });
+    }
+  }, [borderNavbar]);
 
   const settings = {
     dots: true,
@@ -17,6 +61,7 @@ export default function Events() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    arrows: true,
   };
 
   const filteredData =
@@ -35,42 +80,39 @@ export default function Events() {
         backgroundPosition: "center",
       }}
     >
-      <div className="p-2 mt-[80px] w-full">
-        <h1 className="w-full pb-5 flex flex-row justify-center text-[3rem]">
+      <div id="eventsHeading" className="p-2 mt-[80px] w-full">
+        <h1
+          ref={eventsHeading}
+          className="w-full flex flex-row justify-center text-[3rem]"
+        >
           Events
         </h1>
-        <div className="list-none  w-full z-10 flex justify-center text-white pt-4">
-          <ul className="flex flex-row border-[1px] border-slate-400 px-6 rounded-3xl ">
-            <li
-              className={`py-4 pr-7 cursor-pointer hover:scale-105 transform ease-in-out duration-150 hover:font-semibold ${
-                selectedCategory === "Workshops"
-                  ? "text-black"
-                  : "text-slate-800 hover:text-black"
-              }`}
-              onClick={() => setSelectedCategory("Workshops")}
-            >
-              Workshops
-            </li>
-            <li
-              className={`py-4 pr-7 cursor-pointer hover:scale-105 transform ease-in-out duration-150 hover:font-semibold ${
-                selectedCategory === "Sessions"
-                  ? "text-black"
-                  : "text-slate-800 hover:text-black"
-              }`}
-              onClick={() => setSelectedCategory("Sessions")}
-            >
-              Sessions
-            </li>
-            <li
-              className={`py-4 cursor-pointer hover:scale-105 transform ease-in-out duration-150 hover:font-semibold ${
-                selectedCategory === "Competitions"
-                  ? "text-black"
-                  : "text-slate-800 hover:text-black"
-              }`}
-              onClick={() => setSelectedCategory("Competitions")}
-            >
-              Competitions
-            </li>
+        <div
+          id="border"
+          className="list-none w-full z-10 flex justify-center text-white pt-4 pb-6"
+        >
+          <ul
+            ref={borderNavbar}
+            className="flex flex-row border-[1px] border-slate-400 pl-6 rounded-3xl"
+          >
+            {["Workshops", "Sessions", "Competitions"].map((item, index) => (
+              <li
+                key={index}
+                className={`py-4 pr-7 cursor-pointer hover:scale-105 transform ease-in-out duration-150 hover:font-semibold ${
+                  selectedCategory === "Workshops"
+                    ? "text-black"
+                    : "text-slate-800 hover:text-black"
+                }`}
+                onClick={() => setSelectedCategory(`${item}`)}
+              >
+                <button
+                  type="button"
+                  className=""
+                >
+                  {item}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="w-full ">
@@ -121,7 +163,13 @@ export default function Events() {
                         {/* <p className="text-[#808080] pl-8 pt-4 pb-4 hover:underline">
                           Know More
                         </p> */}
-                        <button type="button" className="text-white px-4 py-1 bg-[#2b2b2b] rounded-xl hover:text-[#808080]" onClick={() => { navigate('/about') }}>
+                        <button
+                          type="button"
+                          className="text-white px-4 py-1 bg-[#2b2b2b] rounded-xl hover:text-[#808080]"
+                          onClick={() => {
+                            navigate("/about");
+                          }}
+                        >
                           Know more
                         </button>
                         {hoveredEventId === d.id && (

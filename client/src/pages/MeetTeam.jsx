@@ -23,20 +23,20 @@ export default function MeetTeam() {
             <div
               key={index}
               id={lead.id}
-              className="h-[450px] w-[320px] bg-slate-300 border shadow-xl rounded-[50px]"
+              className="h-[420px] w-[320px] bg-slate-300 border shadow-xl rounded-[50px]"
             >
-              <div className="flex justify-center h-[45%] pt-[40px]">
+              <div className="flex justify-center h-[50%] pt-[40px]">
                 <img
                   src={lead.imageUrl}
                   alt=""
-                  className="rounded-full shadow-2xl h-[150px] w-[150px]"
+                  className="rounded-full object-cover shadow-2xl h-[170px] w-[150px]"
                 />
               </div>
               <div className="w-full flex justify-center h-[10%] text-3xl pt-2">
                 <span>{lead.name}</span>
               </div>
-              <div className="w-full flex justify-center h-[5%] font-light text-lg ">
-                <span className="pr-4 font-medium">
+              <div className="w-full flex justify-center h-[5%] pt-2 font-light text-sm">
+                <span className="text-slate-600 font-light">
                   {lead.title.toUpperCase()}
                 </span>
               </div>
@@ -45,37 +45,34 @@ export default function MeetTeam() {
                   {`"${lead.quote}"`}
                 </div>
               </div>
-              <div className="w-full h-[5%] mb-2">
-                <p className="pl-10">Follow on:</p>
-              </div>
               <div className="w-full flex justify-center h-[15%]">
-                <div className="w-[80%] flex flex-row gap-2">
+                <div className="w-[50%] flex flex-row items-end pb-4">
                   <div className="basis-1/4 flex justify-center">
                     <img
-                      src="../public/instagram.png"
+                      src="instagram.png"
                       alt=""
-                      className="w-9 h-9 hover:cursor-pointer hover:scale-110 transform duration-150 ease-in-out"
+                      className="w-7 h-7 hover:cursor-pointer hover:scale-110 transform duration-150 ease-in-out"
                     />
                   </div>
                   <div className="basis-1/4 flex justify-center">
                     <img
-                      src="../public/linkedin.png"
+                      src="linkedin.png"
                       alt=""
-                      className="w-9 h-9 hover:cursor-pointer hover:scale-110 transform duration-150 ease-in-out"
+                      className="w-7 h-7 hover:cursor-pointer hover:scale-110 transform duration-150 ease-in-out"
                     />
                   </div>
                   <div className="basis-1/4 flex justify-center">
                     <img
-                      src="../public/twitter.png"
+                      src="twitter.png"
                       alt=""
-                      className="w-9 h-9 hover:cursor-pointer hover:scale-110 transform duration-150 ease-in-out"
+                      className="w-7 h-7 hover:cursor-pointer hover:scale-110 transform duration-150 ease-in-out"
                     />
                   </div>
                   <div className="basis-1/4 flex justify-center">
                     <img
-                      src="../public/github.png"
+                      src="github.png"
                       alt=""
-                      className="w-9 h-9 hover:cursor-pointer hover:scale-110 transform duration-150 ease-in-out"
+                      className="w-7 h-7 hover:cursor-pointer hover:scale-110 transform duration-150 ease-in-out"
                     />
                   </div>
                 </div>

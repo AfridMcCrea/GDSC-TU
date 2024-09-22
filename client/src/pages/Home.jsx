@@ -65,7 +65,7 @@ export default function Home() {
         <div className="w-full flex justify-center">
           <h1
             ref={headingTwo}
-            className="text-gray-500 dark:text-gray-300 sm:text-[40px] text-[21px] m-auto"
+            className="text-gray-500 dark:text-gray-300 sm:text-[40px] text-[21px]"
           >
             Tezpur University
           </h1>
