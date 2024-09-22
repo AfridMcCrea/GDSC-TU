@@ -13,7 +13,7 @@ export default function MeetTeam() {
     >
       <div className="p-20 m-5">
         <div className="p-2 pt-[10px]">
-          <h1 className="text-center sm:m-10 sm:text-[40px]">Meet the Team!</h1>
+          <h1 className="text-center sm:m-10 sm:text-[40px]">Meet the Team</h1>
         </div>
         <div className="text-[1.5rem] w-full">
           <h3 className="w-full font-semibold">Presenting your leads:</h3>

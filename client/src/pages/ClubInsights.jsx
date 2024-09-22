@@ -3,6 +3,7 @@ import backgroundImage from "../assets/background.png";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import CountUp from 'react-countup'
 
 export default function ClubInsights() {
   const headingRef = useRef(null);
@@ -49,7 +50,9 @@ export default function ClubInsights() {
           <div className="ml-[120px] mt-[100px]">
             <CircleAnimation />
           </div>
-          <h1 className="ml-[100px] text-5xl m-5">300+</h1>
+          <h1 className="ml-[100px] text-5xl m-5">
+            <CountUp start={0} end={300} duration={4} />+
+          </h1>
           <div className="">
             <h1 className="ml-[110px] font-light text-3xl ">Active</h1>
             <h1 className="ml-[90px] font-light text-3xl ">Members</h1>

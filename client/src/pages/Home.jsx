@@ -8,6 +8,7 @@ import MeetTeam from "./MeetTeam";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Newsletter from "./Newsletter";
 
 export default function Home() {
   const logoAnimation = useRef(null);
@@ -75,6 +76,7 @@ export default function Home() {
       <ClubInsights />
       <Events />
       <MeetTeam />
+      <Newsletter />
     </div>
   );
 }
